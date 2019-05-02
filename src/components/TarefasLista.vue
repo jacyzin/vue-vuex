@@ -46,7 +46,7 @@
 </template>
 
 <script>
-    import { mapGetters, mapState } from 'vuex';
+    import { mapGetters, mapMutations, mapState } from 'vuex';
     import TarefaSalvar from './TarefaSalvar.vue'
     import TarefasListaIten from './TarefasListaIten.vue'
 
@@ -71,9 +71,10 @@ export default {
         ])
     },
     methods: {
+        ...mapMutations(['listarTarefas']),
         exibirFormularioCriarTarefa(event) {
             if (this.tarefaSelecionada) {
-                this.tarefaSelecionada = undefined
+                this.tarefaSelecionada = undefined;
                 return
             }
             this.exibirFormulario = !this.exibirFormulario
@@ -87,8 +88,8 @@ export default {
             this.tarefaSelecionada = undefined
         }
     },
-    getters: {
-
+    created() {
+        this.listarTarefas();
     }
 }
 </script>
