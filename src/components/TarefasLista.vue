@@ -15,11 +15,11 @@
             </div>
         </div>
 
-        <h3 class="font-weight-light mt-4">A Fazer ({{ $store.getters.tarefasAFazer.length }})</h3>
+        <h3 class="font-weight-light mt-4">A Fazer ({{ tarefasAFazer.length }})</h3>
 
-        <ul class="list-group" v-if="$store.getters.tarefasAFazer.length > 0">
+        <ul class="list-group" v-if="tarefasAFazer.length > 0">
             <TarefasListaIten
-                v-for="tarefa in $store.getters.tarefasAFazer"
+                v-for="tarefa in tarefasAFazer"
                 :key="tarefa.id"
                 :tarefa="tarefa"
                 @editar="selecionarTarefaParaEdicao" />
@@ -27,11 +27,11 @@
 
         <p v-else>Nenhuma tarefa a fazer.</p>
 
-        <h3 class="font-weight-light mt-4">Concluídas ({{ $store.getters.totalDeTarefasConcluidas }})</h3>
+        <h3 class="font-weight-light mt-4">Concluídas ({{ totalDeTarefasConcluidas }})</h3>
 
-        <ul class="list-group" v-if="$store.getters.tarefasConcluidas.length > 0">
+        <ul class="list-group" v-if="tarefasConcluidas.length > 0">
             <TarefasListaIten
-                    v-for="tarefa in $store.getters.tarefasConcluidas"
+                    v-for="tarefa in tarefasConcluidas"
                     :key="tarefa.id"
                     :tarefa="tarefa"
                     @editar="selecionarTarefaParaEdicao" />
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-    import { mapState } from 'vuex';
+    import { mapGetters, mapState } from 'vuex';
     import TarefaSalvar from './TarefaSalvar.vue'
     import TarefasListaIten from './TarefasListaIten.vue'
 
@@ -62,7 +62,13 @@ export default {
         }
     },
     computed: {
-        ...mapState(['tarefas'])
+        ...mapState(['tarefas']),
+        ...mapGetters([
+            'tarefasAFazer',
+            'tarefasConcluidas',
+            'totalDeTarefasConcluidas',
+            'buscarTarefaPorId'
+        ])
     },
     methods: {
         exibirFormularioCriarTarefa(event) {

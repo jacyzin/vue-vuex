@@ -58,6 +58,11 @@ export default {
             const operacao = !this.tarefa ? 'criar' : 'editar'
             console.log('Operação: ', operacao)
         }
+    },
+    created() {
+        if (this.tarefa) {
+            console.log("tarefa por id:", this.$store.getters.buscarTarefaPorId(this.tarefa.id))
+        }
     }
 }
 </script>
