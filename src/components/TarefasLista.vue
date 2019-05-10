@@ -91,7 +91,15 @@ export default {
     getters: {
     },
     created() {
-        this.listarTarefas();
+        setTimeout(() => {
+                this.$store.dispatch("listarTarefas", {
+                    tarefas: [
+                        { id: 1, titulo: "Aprender Vue", concluido: true },
+                        { id: 2, titulo: "Aprender Vue Router", concluido: true },
+                        { id: 3, titulo: "Aprender Vuex", concluido: false }
+                    ]
+                })
+            }, 1000);
     }
 }
 </script>
