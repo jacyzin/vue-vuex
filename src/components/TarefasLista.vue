@@ -89,7 +89,6 @@ export default {
         }
     },
     getters: {
-
     },
     created() {
         this.listarTarefas();
