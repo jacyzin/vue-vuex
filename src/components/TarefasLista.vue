@@ -46,7 +46,7 @@
 </template>
 
 <script>
-    import { mapGetters, mapState, mapMutations } from 'vuex';
+    import { mapGetters, mapState, mapMutations, mapActions } from 'vuex';
     import TarefaSalvar from './TarefaSalvar.vue'
     import TarefasListaIten from './TarefasListaIten.vue'
 
@@ -92,13 +92,10 @@ export default {
     },
     created() {
         setTimeout(() => {
-                this.$store.dispatch("listarTarefas", {
-                    tarefas: [
-                        { id: 1, titulo: "Aprender Vue", concluido: true },
-                        { id: 2, titulo: "Aprender Vue Router", concluido: true },
-                        { id: 3, titulo: "Aprender Vuex", concluido: false }
-                    ]
-                })
+                this.$store.dispatch("listarTarefas")
+                    .then(() => {
+                    console.log("Actions executadas")
+                    })
             }, 1000);
     }
 }
