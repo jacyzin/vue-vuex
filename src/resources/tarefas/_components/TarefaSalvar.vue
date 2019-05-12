@@ -55,7 +55,7 @@ export default {
     },
     methods: {
         salvar(event) {
-            const operacao = !this.tarefa ? 'criar' : 'editar'
+            const operacao = !this.tarefa ? 'criar' : 'editar';
             console.log('Operação: ', operacao)
         }
     },

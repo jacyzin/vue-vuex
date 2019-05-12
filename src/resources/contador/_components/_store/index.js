@@ -3,8 +3,8 @@ const getters = {
 };
 
 export default {
-        state: {
-            contador: 0
-        },
-        getters
+    state: {
+        contador: 0
+    },
+    getters
 }
