@@ -41,12 +41,13 @@
             v-if="exibirFormulario"
             :tarefa="tarefaSelecionada" />
 
-
     </div>
 </template>
 
 <script>
     import { mapGetters, mapState, mapMutations, mapActions } from 'vuex';
+
+    import register from './../_store/register'
     import TarefaSalvar from './TarefaSalvar.vue'
     import TarefasListaIten from './TarefasListaIten.vue'
 
@@ -91,6 +92,7 @@ export default {
     getters: {
     },
     created() {
+        register(this.$store);
         setTimeout(() => {
                 this.$store.dispatch("listarTarefas")
                     .then(() => {

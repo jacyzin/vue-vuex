@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import contador from '@/resources/contador/_components/_store/index'
-import tarefas from '@/resources/tarefas/_components/_store/index'
+import contador from '@/resources/contador/_store/index'
 
 Vue.use(Vuex);
 
@@ -11,8 +10,7 @@ const state = {
 };
 
 const modules = {
-    contador,
-    tarefas
+    contador
 };
 
 export default new Vuex.Store({
